@@ -30,86 +30,117 @@ Remember, a Promise can only resolve successfully, or reject when it fails to re
 
 // 1 Create a function that returns a resolving promise
 // Example:
-// when we call returnPromise like 'returnPromise()' we expect our function to use the 
+// when we call returnPromise like 'returnPromise()' we expect our function to use the
 // 'resolve' Promise callback function in order to resolve successfully
 
-const returnPromise = () => { };
+const returnPromise = () => {
+  return Promise.resolve();
+};
 
 // 2 Create a function that returns a promise which returns 10 if it resolves succesfully
 // Example:
 // returnTen() resolves to the value 10
 
-const returnTen = () => { };
+const returnTen = () => {
+  return Promise.resolve(10);
+};
 
 // 3 Create a function that returns a promise which returns 'string' if it resolves succesfully
 // Example:
 // returnString() resolves to the value 'string'
 
-const returnString = () => { };
+const returnString = () => {
+  return Promise.resolve("string");
+};
 
 // 4 Create a function that returns a promise which returns an object with a key of name and value of 'Bob' if it resolves succesfully
 // Example:
 // returnBob() resolves to the value { name: 'Bob' }
 
-const returnBob = () => { };
+const returnBob = () => {
+  return Promise.resolve({ name: "Bob" });
+};
 
 // 5 Create a function that returns a promise which returns an array with 4 strings of 'eggs', 'apples', 'milk' and 'bread' if it resolves succesfully
 // Example:
 // returnList() resolves to the value ['eggs', 'apples', 'milk', 'bread']
 
-const returnList = () => { };
+const returnList = () => {
+  return Promise.resolve(["eggs", "apples", "milk", "bread"]);
+};
 
 // 6 Create a function that returns a promise which returns "An error occurred" if it rejects
 // Example:
 // anError() rejects to "An error occurred"
 
-const anError = () => { };
+const anError = () => {
+  return Promise.reject("An error occurred");
+};
 
 // 7 Create a function that returns a promise which returns 666 if it rejects
 // Example:
 // theNumberOfTheBeast() rejects to the value 666
 
-const theNumberOfTheBeast = () => { };
+const theNumberOfTheBeast = () => {
+  return Promise.reject(666);
+};
 
 // 8 Create a function that returns a promise which returns an object with a key of error and value of 500 if it rejects
 // Example:
 // internalServerError() rejects to { error: 500 }
 
-const internalServerError = () => { };
+const internalServerError = () => {
+  return Promise.reject({ error: 500 });
+};
 
-// 9 Create a function that returns a promise which resolves to "happy" if the parameter is greater than 
+// 9 Create a function that returns a promise which resolves to "happy" if the parameter is greater than
 // or equal to 1 and rejects to "sad" if the value is less than 1
 // Example:
 // happySad(1) resolves to "happy"
 // happySad(0) rejects to "sad"
 
-const happySad = () => { };
+const happySad = (num) => {
+  if (num >= 1) {
+    return Promise.resolve("happy");
+  } else {
+    return Promise.reject("sad");
+  }
+};
 
-// 10 Create a function that returns a promise which resolves to "Yes. Luke, I am your father." if the 
+// 10 Create a function that returns a promise which resolves to "Yes. Luke, I am your father." if the
 // parameter is "Luke" and rejects to "Not your dad." if the value is anything else
 // Example:
 // amIYourFather() resolves to "Yes. Luke, I am your father."
 // amIYourFather() rejects to "Not your dad."
 
-const amIYourFather = () => { };
+const amIYourFather = (string) => {
+  if (string == "Luke") {
+    return Promise.resolve("Yes. Luke, I am your father.");
+  } else {
+    return Promise.reject("Not your dad.");
+  }
+};
 
-// 11 Create a function that returns a promise. The promise should resolve to a new function that returns "My name is <input name>" 
+// 11 Create a function that returns a promise. The promise should resolve to a new function that returns "My name is <input name>"
 // Example:
 // A call to myNameIs() resolves to a new function that takes one argument, name, and returns "My name is name" Eg (name) => `My name is ${name}`
 
-const myNameIs = () => { };
-
+const myNameIs = () => {
+  return new Promise((myResolve) =>
+    myResolve((value) => `My name is ${value}`)
+  );
+};
 
 module.exports = {
-    returnPromise,
-    returnTen,
-    returnString,
-    returnBob,
-    returnList,
-    anError,
-    theNumberOfTheBeast,
-    internalServerError,
-    happySad,
-    amIYourFather,
-    myNameIs
-}
+  returnPromise,
+  returnTen,
+  returnString,
+  returnBob,
+  returnList,
+  anError,
+  theNumberOfTheBeast,
+  internalServerError,
+  happySad,
+  amIYourFather,
+  myNameIs,
+};
