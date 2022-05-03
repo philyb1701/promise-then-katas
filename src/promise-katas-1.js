@@ -61,6 +61,14 @@ const returnBob = () => {
   return Promise.resolve({ name: "Bob" });
 };
 
+// const returnBob = () => {
+//   return new Promise((res, rej) => {
+//     res({
+//       name: "Bob",
+//     });
+//   });
+// };
+
 // 5 Create a function that returns a promise which returns an array with 4 strings of 'eggs', 'apples', 'milk' and 'bread' if it resolves succesfully
 // Example:
 // returnList() resolves to the value ['eggs', 'apples', 'milk', 'bread']

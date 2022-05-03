@@ -39,12 +39,15 @@ const cat = () => {
 // 3 Create a function that uses the fetch function to make a request to the "dogs" URL and returns
 // the naughtiest dog - expected return value {name: "Mutley", naughty: 10} of type Object
 
-// GO BACK AND DO THIS ONE
-const dog = () => {
-  return fetch("dogs").then(() => {
-    return { name: "Mutley", naughty: 10 };
-  });
-};
+const dog = () =>
+  fetch("dogs").then(
+    ({ data }) =>
+      data.dogs.reduce((prev, curr) => {
+        return prev.naughty > curr.naughty ? prev : curr;
+      }),
+    { name: "", naughty: 0 }
+  );
+
 // 4 Create a function that uses the fetch function to make requests to the "jokes" URL and returns
 // a joke object with the key of question and answer - expected return {
 //     question: "Why did the scarecrow win the Nobel Prize?",
